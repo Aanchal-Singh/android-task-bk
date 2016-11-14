@@ -1,24 +1,96 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout android:layout_height="match_parent"
     android:layout_width="match_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/imageBackground">
 
-    <android.support.v7.widget.SearchView
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:id="@+id/search_view"
-        android:elevation="2dp"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:id="@+id/rl_titleBar"
+            android:background="@color/commonBackground">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Flowers"
+                android:textSize="18sp"
+                android:layout_centerInParent="true"
+                android:textColor="@color/titleTextColor"/>
+        </RelativeLayout>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_margin="6dp"
+            android:layout_below="@+id/rl_titleBar"
+            android:id="@+id/search_layout"
+            app:cardCornerRadius="5dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/ed_search"
+                    android:hint="Your search query here.."
+                    android:textColorHint="@color/searchHintColor"
+                    android:imeOptions="actionSearch"
+                    android:inputType="text"
+                    android:background="@null"
+                    android:layout_marginLeft="8dp"/>
+
+                <ImageView
+                    android:id="@+id/image_search"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:src="@drawable/image_search_icon"
+                    android:layout_marginRight="8dp"
+                    android:layout_toLeftOf="@+id/image_filter"
+                    android:layout_centerInParent="true"
+                    android:alpha="0.9"
+                    />
+
+                <ImageView
+                    android:id="@+id/image_filter"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:src="@drawable/image_filter_icon"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="8dp"
+                    android:layout_centerInParent="true"
+                    android:alpha="1"/>
+
+            </RelativeLayout>
+
+        </android.support.v7.widget.CardView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/no_results_view"
+        android:layout_below="@+id/search_layout"
+        android:text="No Results Found"
+        android:textSize="18dp"
+        android:textColor="@color/noResultsColor"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="8dp"
+        android:visibility="gone"/>
 
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/search_view"
+        android:layout_below="@+id/search_layout"
         android:id="@+id/recycler_view"
         android:scrollbars="vertical"
+        android:layout_marginTop="2dp"
         android:background="@color/imageBackground">
-
-
     </android.support.v7.widget.RecyclerView>
+
+
 
 
 </RelativeLayout>
